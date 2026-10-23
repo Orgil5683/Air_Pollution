@@ -1,5 +1,3 @@
-[English](README.en.md) · **Монгол**
-
 # Улаанбаатарын агаар: PM2.5-ын 9 жилийн өгөгдөл
 
 [OpenAQ API](https://openaq.org)-ийн бодит мэдрэгчийн өгөгдлөөр Улаанбаатарын агаарын бохирдлыг шинжилсэн төсөл. Улирлын ялгаа, 2019 оны 5-р сарын түүхий нүүрсний хориг, дүүргүүдийн ялгаа, жилд хэдэн өдөр агаар эрүүл бус байдгийг судалсан.
@@ -93,35 +91,42 @@
 
 ```
 Air_Pollution/
+├── analysis.ipynb              # гол шинжилгээ: зөвхөн aiaa-eda-team4 сангийн функцууд
 ├── src/
-│   ├── find_stations.py      # Улаанбаатарын PM2.5 мэдрэгчүүдийг олох
-│   └── download_daily.py     # өдрийн дунджийг data/ руу татах
+│   ├── find_stations.py        # Улаанбаатарын PM2.5 мэдрэгчүүдийг олох
+│   └── download_daily.py       # өдрийн дунджийг data/ руу татах
 ├── notebooks/
-│   └── 01_clean_explore.ipynb  # цэвэрлэгээ, шинжилгээ, график
-├── data/                     # түүхий ба цэвэрлэсэн CSV
-├── figures/                  # хадгалсан графикууд
+│   └── 01_clean_explore.ipynb  # анхны судалгаа (сан бүтээхээс өмнөх хувилбар)
+├── data/                       # түүхий ба цэвэрлэсэн CSV
+├── figures/                    # analysis.ipynb-ийн графикууд
 └── requirements.txt
 ```
 
+Шинжилгээ нь манай багийн [`aiaa-eda-team4`](https://pypi.org/project/aiaa-eda-team4/) санг ашигладаг. Notebook-д `def` бичээгүй, цэвэрлэгээ, статистик, график бүгд сангаас ирнэ.
+
 ## Хэрхэн ажиллуулах вэ
+
+**Шинжилгээг ажиллуулах (API түлхүүр хэрэггүй):**
+
+1. `analysis.ipynb`-г VS Code эсвэл Colab-д нээнэ (Colab: **File → Open notebook → GitHub**).
+2. **Run All** дарна. Эхний нүд сангаа PyPI-аас суулгаж (`%pip install aiaa-eda-team4`), өгөгдлийг GitHub-аас уншина.
+3. Графикууд `figures/`, цэвэрлэсэн өгөгдөл `data/ub_pm25_clean.csv`-д хадгалагдана. Colab дээр `figures.zip` автоматаар татагдана.
+
+**Өгөгдлийг OpenAQ-аас дахин татах (заавал биш):**
 
 1. [explore.openaq.org](https://explore.openaq.org)-оос үнэгүй API түлхүүр аваарай.
 2. Төслийн хавтаст `.env` файл үүсгэнэ (git үүнийг хянахгүй):
    ```
    OPENAQ_API_KEY=your-key-here
    ```
-3. Python орчноо бэлдэнэ:
+3. Орчноо бэлдээд скриптүүдийг ажиллуулна:
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
-   ```
-4. Скриптүүдийг ажиллуулаад notebook-оо нээнэ:
-   ```bash
    python src/find_stations.py
    python src/download_daily.py
    ```
-   `notebooks/01_clean_explore.ipynb`-г нээгээд **Run All** дарна.
 
 ## Эх сурвалж
 
