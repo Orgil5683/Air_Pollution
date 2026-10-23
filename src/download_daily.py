@@ -28,7 +28,7 @@ def get_days(sensor_id):
         r = requests.get(f"{BASE}/sensors/{sensor_id}/days", headers=HEADERS,
                          params={"date_from": "2016-01-01", "date_to": "2026-10-19",
                                  "limit": 1000, "page": page})
-        if r.status_code == 429:          # rate limited: wait, then retry
+        if r.status_code == 429:         
             print("  Rate limited, waiting 60s...")
             time.sleep(60)
             continue
