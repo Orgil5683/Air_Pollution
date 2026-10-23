@@ -95,8 +95,6 @@ Air_Pollution/
 ├── src/
 │   ├── find_stations.py        # Улаанбаатарын PM2.5 мэдрэгчүүдийг олох
 │   └── download_daily.py       # өдрийн дунджийг data/ руу татах
-├── notebooks/
-│   └── 01_clean_explore.ipynb  # анхны судалгаа (сан бүтээхээс өмнөх хувилбар)
 ├── data/                       # түүхий ба цэвэрлэсэн CSV
 ├── figures/                    # analysis.ipynb-ийн графикууд
 └── requirements.txt
